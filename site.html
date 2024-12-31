@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новогоднее поздравление</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Pacifico', cursive, Arial, sans-serif;
+            background: radial-gradient(circle, #003366, #000814);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0.5em 0;
+            color: #ffdd00;
+            text-shadow: 0 0 20px #ff6347, 0 0 30px #ffa500;
+            animation: glow 1.5s infinite;
+        }
+
+        p {
+            font-size: 1.8rem;
+            color: #f0f8ff;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px #ff6347, 0 0 30px #ffa500, 0 0 40px #ffdd00; }
+            50% { text-shadow: 0 0 10px #ff4500, 0 0 20px #ffa500, 0 0 30px #ffdd00; }
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10%;
+            font-size: 2rem;
+            opacity: 0.9;
+            color: white;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+
+        .santa {
+            position: absolute;
+            top: 10%;
+            left: -20%;
+            width: 250px;
+            animation: fly 12s linear infinite;
+        }
+
+        @keyframes fly {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(120vw); }
+        }
+
+        @keyframes santa-wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        .santa img {
+            animation: santa-wave 2s infinite;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: #ffdd00;
+            font-size: 1rem;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>С Наступающим, Анастасия!</h1>
+        <p>Пусть новый год принесёт радость, здоровье и счастье!</p>
+    </div>
+
+    <div class="santa">
+        <img src="img/santa.jpg" alt="Санта" width="250">
+    </div>
+
+    <footer>
+        Сделано с любовью и новогодним настроением ✨
+    </footer>
+
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.fontSize = Math.random() * 2 + 1 + 'rem';
+            document.body.appendChild(snowflake);
+
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }
+
+        setInterval(createSnowflake, 150);
+    </script>
+</body>
+</html>
